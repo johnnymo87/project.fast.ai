@@ -28,9 +28,9 @@ The only local dependency you need to configure to use this codebase is `docker-
     ```console
     poetry run pytest
     ```
-  * Run the app.
+  * Run the `python_starter` module.
     ```console
-    poetry run python .
+    poetry run python -m python_starter
     ```
   * Run the auto formatter.
     ```console

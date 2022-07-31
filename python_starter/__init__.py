@@ -1,1 +1,3 @@
-__version__ = "0.1.0"
+from python_starter.hello_world import HelloWorld
+
+__all__ = ["HelloWorld"]
