@@ -1,42 +1,20 @@
-# Python Starter Kit
-This app is a starter kit for writing code and [tests](https://docs.python.org/3/library/unittest.html) in python. Use it as a seed for starting a new python project. Use the following command to copy this app's code to a new directory:
-```console
-mkdir -p path/to/new
-cp -r path/to/this/directory path/to/new/directory
-```
+# project.fast.ai
+This code base is a collection of little utility modules that I'm developing while taking [the course.fast.ai MOOC](https://course.fast.ai/).
 
-## Dependencies
-The only local dependency you need to configure to use this codebase is `docker-compose`. This is great, because once you have docker working, it eliminates the "well it works on my machine" kind of problems. If it works on docker for you, it will work in docker for anyone.
+## Table of contents
+* [Photo Download URL Finder](photo_download_url_finder/README.md)
 
 ## Install
-* Build the image:
-  ```console
-  docker-compose build
-  ```
+For the most part, how to install the code is project-specific, so see project-specific README files.
 
 ## Run
-* Run the app one time and exit:
+For the most part, how to run the code is project-specific, so see project-specific README files.
+
+* Run the auto formatter.
   ```console
-  docker-compose run --rm app
+  poetry run pre-commit run --all-files
   ```
-* Open a long-running session inside the container:
-  ```console
-  docker-compose run --rm app bash
-  ```
-  From here, you can ...
-  * Run the tests.
-    ```console
-    poetry run pytest
-    ```
-  * Run the `python_starter` module.
-    ```console
-    poetry run python -m python_starter
-    ```
-  * Run the auto formatter.
-    ```console
-    poetry run pre-commit run --all-files
-    ```
-    * For more usage instructions, see [the pre-commit documentation](https://pre-commit.com/).
+  * For more usage instructions, see [the pre-commit documentation](https://pre-commit.com/).
 
 ## Debug
 * Documentation [here](https://docs.python.org/3/library/pdb.html).

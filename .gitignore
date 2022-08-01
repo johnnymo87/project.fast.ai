@@ -1,3 +1,13 @@
 *.py[cod]
 .python_history
-.hypothesis/
+.DS_Store
+
+# For photo_download_url_finder
+###
+credentials.json
+gphtospy.log
+photo_download_url_finder/.env
+photo_download_url_finder/download_urls
+photoslibrary_v1.token
+###
+#

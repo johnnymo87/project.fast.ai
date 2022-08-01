@@ -10,7 +10,7 @@ RUN curl -sSL https://install.python-poetry.org | python3 - && \
 
 COPY . /app
 
-CMD poetry run python .
+CMD ["sleep", "infinity"]
 
 FROM production AS development
 
