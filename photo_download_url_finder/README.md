@@ -25,8 +25,9 @@ Since I can't use docker for this app, I use these steps to install this app on 
   ```
 * Install poetry.
   ```console
-  curl -sSL https://install.python-poetry.org | sudo POETRY_HOME=/usr/local python3 -
+  curl -sSL https://install.python-poetry.org | python3 -
   ```
+  * This will output instructions for how to add poetry to the PATH. Follow them.
 * Install dependencies.
   ```console
   poetry install
