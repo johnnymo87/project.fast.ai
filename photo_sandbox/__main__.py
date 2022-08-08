@@ -69,7 +69,7 @@ photos = (
 # Get ids from photos
 ids = list(photo.get("id") for photo in photos)
 # Write ids to file, one per line
-with open("photo_download_url_finder/ids_of_all_photos_since_sept_2018", "w") as fw:
+with open("photo_sandbox/ids_of_all_photos_since_sept_2018", "w") as fw:
     csv.writer(fw).writerows([id] for id in ids)
 
 # # Get photos from album
@@ -80,7 +80,7 @@ with open("photo_download_url_finder/ids_of_all_photos_since_sept_2018", "w") as
 # # Get ids from photos
 # ids = list(photo.get("id") for photo in photos)
 # # Write ids to file, one per line
-# with open("photo_download_url_finder/ids_of_photos_in_album", "w") as fw:
+# with open("photo_sandbox/ids_of_photos_in_album", "w") as fw:
 #     csv.writer(fw).writerows([id] for id in ids)
 
 # first_five_media = itertools.islice(media_iterator, 5)
@@ -96,9 +96,9 @@ with open("photo_download_url_finder/ids_of_all_photos_since_sept_2018", "w") as
 # download_urls = list(download_urls)
 #
 # # Write download urls to file
-# with open("photo_download_url_finder/download_urls", "w") as f:
+# with open("photo_sandbox/download_urls", "w") as f:
 #     f.writelines(download_urls)
 #
 # print(
-#     f"Wrote {len(download_urls)} download URLs to photo_download_url_finder/download_urls"
+#     f"Wrote {len(download_urls)} download URLs to photo_sandbox/download_urls"
 # )

@@ -2,12 +2,12 @@
 .python_history
 .DS_Store
 
-# For photo_download_url_finder
+# For photo_sandbox
 ###
 credentials.json
 gphtospy.log
-photo_download_url_finder/.env
-photo_download_url_finder/download_urls
+photo_sandbox/.env
+photo_sandbox/download_urls
 photoslibrary_v1.token
 ###
 #

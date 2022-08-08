@@ -2,7 +2,7 @@
 This code base is a collection of little utility modules that I'm developing while taking [the course.fast.ai MOOC](https://course.fast.ai/).
 
 ## Table of contents
-* [Photo Download URL Finder](photo_download_url_finder/README.md)
+* [Photo Sandbox](photo_sandbox/README.md)
 
 ## Install
 For the most part, how to install the code is project-specific, so see project-specific README files.
