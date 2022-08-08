@@ -2,11 +2,14 @@
 import csv
 import json
 import os
+from datetime import date as python_date
 
 from dotenv import load_dotenv
 from gphotospy import authorize
 from gphotospy.album import Album
 from gphotospy.media import Media  # , MediaItem
+from gphotospy.media import date as gphoto_date
+from gphotospy.media import date_range as gphoto_date_range
 
 # Create the credentials file that gphotospy wants
 load_dotenv()
@@ -41,26 +44,44 @@ album_iterator = album_manager.list()
 #     print(album)
 
 # Find album by title
-album_title = input("Please enter the album title:\n")
-album = next(
-    album for album in album_iterator if album.get("title").strip() == album_title
-)
-# print(json.dumps(album, indent=2))
-
-album_id = album.get("id")
+# album_title = input("Please enter the album title:\n")
+# album = next(
+#     album for album in album_iterator if album.get("title").strip() == album_title
+# )
+# # print(json.dumps(album, indent=2))
+#
+# album_id = album.get("id")
 
 # Init the media manager
 media_manager = Media(service)
-# Get photos from album
-media_iterator = media_manager.search_album(album_id)
+
+# Get all photos since 2018-09-01, which is approximately the date of my
+# earliest photos of Livia.
+today = python_date.today()
+start_date = gphoto_date(2019, 8, 1)
+end_date = gphoto_date(today.year, today.month, today.day)
+media_iterator = media_manager.search(
+    gphoto_date_range(start_date=start_date, end_date=end_date)
+)
 photos = (
     media for media in media_iterator if media.get("mimeType").startswith("image")
 )
 # Get ids from photos
 ids = list(photo.get("id") for photo in photos)
 # Write ids to file, one per line
-with open("photo_download_url_finder/ids_of_photos_in_album", "w") as fw:
+with open("photo_download_url_finder/ids_of_all_photos_since_sept_2018", "w") as fw:
     csv.writer(fw).writerows([id] for id in ids)
+
+# # Get photos from album
+# media_iterator = media_manager.search_album(album_id)
+# photos = (
+#     media for media in media_iterator if media.get("mimeType").startswith("image")
+# )
+# # Get ids from photos
+# ids = list(photo.get("id") for photo in photos)
+# # Write ids to file, one per line
+# with open("photo_download_url_finder/ids_of_photos_in_album", "w") as fw:
+#     csv.writer(fw).writerows([id] for id in ids)
 
 # first_five_media = itertools.islice(media_iterator, 5)
 #
