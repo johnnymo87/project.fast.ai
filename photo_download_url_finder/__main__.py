@@ -1,11 +1,12 @@
 # import itertools
+import csv
 import json
 import os
 
 from dotenv import load_dotenv
 from gphotospy import authorize
 from gphotospy.album import Album
-from gphotospy.media import Media, MediaItem
+from gphotospy.media import Media  # , MediaItem
 
 # Create the credentials file that gphotospy wants
 load_dotenv()
@@ -50,25 +51,33 @@ album_id = album.get("id")
 
 # Init the media manager
 media_manager = Media(service)
-# Get media from album
+# Get photos from album
 media_iterator = media_manager.search_album(album_id)
+photos = (
+    media for media in media_iterator if media.get("mimeType").startswith("image")
+)
+# Get ids from photos
+ids = list(photo.get("id") for photo in photos)
+# Write ids to file, one per line
+with open("photo_download_url_finder/ids_of_photos_in_album", "w") as fw:
+    csv.writer(fw).writerows([id] for id in ids)
 
 # first_five_media = itertools.islice(media_iterator, 5)
 #
-# # Print info about the first 5 most recent albums
+# # Print info about the first 5 photos
 # for media in first_five_media:
 #     print(json.dumps(media, indent=2))
 
 # Get download urls from photos in album
-photos = (media for media in media_iterator if media.get("mimeType") == "image/jpeg")
-photos = (MediaItem(photo) for photo in photos)
-download_urls = (photo.get_url() for photo in photos)
-download_urls = list(download_urls)
-
-# Write download urls to file
-with open("photo_download_url_finder/download_urls", "w") as f:
-    f.writelines(download_urls)
-
-print(
-    f"Wrote {len(download_urls)} download URLs to photo_download_url_finder/download_urls"
-)
+# photos = (media for media in media_iterator if media.get("mimeType").startswith("image"))
+# photos = (MediaItem(photo) for photo in photos)
+# download_urls = (photo.get_url() for photo in photos)
+# download_urls = list(download_urls)
+#
+# # Write download urls to file
+# with open("photo_download_url_finder/download_urls", "w") as f:
+#     f.writelines(download_urls)
+#
+# print(
+#     f"Wrote {len(download_urls)} download URLs to photo_download_url_finder/download_urls"
+# )
