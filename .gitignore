@@ -2,12 +2,17 @@
 .python_history
 .DS_Store
 
+#
 # For photo_sandbox
 ###
 credentials.json
 gphtospy.log
 photo_sandbox/.env
-photo_sandbox/download_urls
+photo_sandbox/files/*
 photoslibrary_v1.token
 ###
 #
+
+# Don't ignore .gitkeep so that we can use it to version control empty
+# directories.
+!/**/.gitkeep
