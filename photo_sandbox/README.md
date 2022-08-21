@@ -49,8 +49,3 @@ Since I can't use docker for this app, I use these steps to install this app on 
   poetry run pre-commit run --all-files
   ```
   * For more usage instructions, see [the pre-commit documentation](https://pre-commit.com/).
-
-## TODO
-
-#### Use a service account
-There are several ways to do the OAuth2 handshake to authenticate with the google photos API, and the `gphotospy` uses one that require running a local server in order to serve the familiar "Grant GPhotoSpy permission to ..." OAuth2 page. This is fine for user-driven flows, but is limiting for headless flows like mine. I think there's a solution. I need to replace [this `gphotospy` auth code](https://github.com/davidedelpapa/gphotospy/blob/2268051fedd45c2a163d1302ade03bf84fdab2f6/gphotospy/authorize.py#L32-L34) with code that uses [a service account](https://google-auth.readthedocs.io/en/master/user-guide.html#service-account-private-key-files).
