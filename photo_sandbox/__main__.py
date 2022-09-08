@@ -21,11 +21,11 @@ ids_of_photos_of_not_Livia = random.sample(ids_of_photos_of_not_Livia, 150)
 download_urls_of_photos_of_Livia = fetch_photo_urls_from_photo_ids(
     ids_of_photos_of_Livia
 )
-with open("photo_sandbox/files/sample_of_ids_of_photos_of_Livia", "w") as fw:
+with open("photo_sandbox/files/download_urls_of_photos_of_Livia", "w") as fw:
     csv.writer(fw).writerows([url] for url in download_urls_of_photos_of_Livia)
 
 download_urls_of_photos_of_not_Livia = fetch_photo_urls_from_photo_ids(
     ids_of_photos_of_not_Livia
 )
-with open("photo_sandbox/files/sample_of_ids_of_photos_of_not_Livia", "w") as fw:
+with open("photo_sandbox/files/download_urls_of_photos_of_not_Livia", "w") as fw:
     csv.writer(fw).writerows([url] for url in download_urls_of_photos_of_not_Livia)
